@@ -1,8 +1,8 @@
-```bash
-cat hosts.ini
-chmod 600 terra-key-ansible
-ansible -i hosts.ini workers -m ping
-ls
+```cmd
+$cat hosts.ini
+$chmod 600 terra-key-ansible
+$ansible -i hosts.ini workers -m ping
+$ls
 ```
 
 ```json
