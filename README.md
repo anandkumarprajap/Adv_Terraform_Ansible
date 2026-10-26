@@ -209,6 +209,4 @@ cd terraform && terraform destroy -auto-approve
 
 ---
 
-## Maintainer
-
-**Shubham Londhe** — [TrainWithShubham](https://github.com/LondheShubham153)
+--anandkumarprajap
