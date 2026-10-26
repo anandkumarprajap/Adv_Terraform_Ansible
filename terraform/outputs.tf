@@ -1,7 +1,10 @@
+
 output "instance_details" {
-  description = "Details of all EC2 instances"
+  description = "Details of all Ansible lab EC2 instances"
+
   value = {
     for name, instance in aws_instance.my_instance : name => {
+      id         = instance.id
       public_ip  = instance.public_ip
       private_ip = instance.private_ip
       user       = var.instances[name].user
@@ -11,11 +14,14 @@ output "instance_details" {
 }
 
 output "control_node_public_ip" {
-  description = "Public IP of the control node — SSH here to run Ansible"
-  value       = one([for name, inst in aws_instance.my_instance : inst.public_ip if can(regex("control", name))])
+  description = "Public IP of the Ansible control node"
+
+  value = aws_instance.my_instance["control-node-ubuntu"].public_ip
 }
 
 output "inventory_file" {
-  description = "Path to the teaching inventory (used from the control node)"
-  value       = local_file.ansible_inventory.filename
+  description = "Generated Ansible inventory path"
+
+  value = local_file.ansible_inventory.filename
 }
+
